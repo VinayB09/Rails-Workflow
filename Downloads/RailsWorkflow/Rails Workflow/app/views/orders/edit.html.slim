@@ -1,0 +1,13 @@
+.container
+  - if current_operation.present?
+    h1.page-header = current_operation.title
+    p = current_operation.instruction
+  - else
+    h1.page-header Editing order
+
+  == render 'form'
+
+  = link_to 'Show', @order
+  '|
+  = link_to 'Back', orders_path
+

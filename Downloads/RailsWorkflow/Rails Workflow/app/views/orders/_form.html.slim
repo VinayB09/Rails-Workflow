@@ -1,0 +1,18 @@
+= simple_form_for(@order) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.simple_fields_for :lines do |l|
+      .row
+        = l.input :id, as: :hidden
+        = l.input :product_id, as: :hidden
+        = l.input :qty, label: l.object.name
+
+
+  .form-actions
+  - if current_operation.present?
+    .btn-group
+      = f.submit value="Complete", class: "btn btn-success"
+  - else
+    .form-actions
+      = f.button :submit
